@@ -28,4 +28,7 @@ void print_array(const int *array, size_t size);
 void sort_partition(int *array, int size, int first, int last);
 int get_pivot_index(int *array, size_t size, int first, int last);
 void bubble_sort(int *array, size_t size);
+void shell_sort(int *array, size_t size);
+void cocktail_sort_list(listint_t **list);
+void swap_nodes(listint_t **list, listint_t **node1, listint_t **node2);
 #endif
