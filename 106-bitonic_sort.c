@@ -12,25 +12,25 @@
  */
 void bitonic_merge(int *array, size_t low, size_t count, int dir)
 {
-    if (count > 1)
-    {
-        size_t k = count / 2;
-        size_t i;
-        int temp;
+	if (count > 1)
+	{
+	size_t k = count / 2;
+	size_t i;
+	int temp;
 
-        for (i = low; i < low + k; i++)
-        {
-            if ((array[i] > array[i + k]) == dir)
-            {
-                temp = array[i];
-                array[i] = array[i + k];
-                array[i + k] = temp;
-            }
-        }
+	for (i = low; i < low + k; i++)
+	{
+	if ((array[i] > array[i + k]) == dir)
+	{
+	temp = array[i];
+	array[i] = array[i + k];
+	array[i + k] = temp;
+	}
+	}
 
-        bitonic_merge(array, low, k, dir);
-        bitonic_merge(array, low + k, k, dir);
-    }
+	bitonic_merge(array, low, k, dir);
+	bitonic_merge(array, low + k, k, dir);
+	}
 }
 
 /**
@@ -42,34 +42,34 @@ void bitonic_merge(int *array, size_t low, size_t count, int dir)
  */
 void bitonic_sort_recursive(int *array, size_t low, size_t count, int dir)
 {
-    if (count > 1)
-    {
-        size_t k = count / 2;
-        size_t i;
-        
-        printf("Merging [%s]: ", dir ? "Ascending" : "Descending");
-        for (i = low; i < low + count; i++)
-        {
-            printf("%d", array[i]);
-            if (i < low + count - 1)
-                printf(", ");
-        }
-        printf("\n");
+	if (count > 1)
+	{
+	size_t k = count / 2;
+	size_t i;
 
-        bitonic_sort_recursive(array, low, k, 1);
-        bitonic_sort_recursive(array, low + k, k, 0);
+	printf("Merging [%s]: ", dir ? "Ascending" : "Descending");
+	for (i = low; i < low + count; i++)
+	{
+	printf("%d", array[i]);
+	if (i < low + count - 1)
+	printf(", ");
+	}
+	printf("\n");
 
-        bitonic_merge(array, low, count, dir);
+	bitonic_sort_recursive(array, low, k, 1);
+	bitonic_sort_recursive(array, low + k, k, 0);
 
-        printf("Result [%s]: ", dir ? "Ascending" : "Descending");
-        for (i = low; i < low + count; i++)
-        {
-            printf("%d", array[i]);
-            if (i < low + count - 1)
-                printf(", ");
-        }
-        printf("\n");
-    }
+	bitonic_merge(array, low, count, dir);
+
+	printf("Result [%s]: ", dir ? "Ascending" : "Descending");
+	for (i = low; i < low + count; i++)
+	{
+	printf("%d", array[i]);
+	if (i < low + count - 1)
+	printf(", ");
+	}
+	printf("\n");
+	}
 }
 
 /**
@@ -80,10 +80,10 @@ void bitonic_sort_recursive(int *array, size_t low, size_t count, int dir)
  */
 void bitonic_sort(int *array, size_t size)
 {
-    if (array == NULL || size < 2)
-        return;
+	if (array == NULL || size < 2)
+	return;
 
-    bitonic_sort_recursive(array, 0, size, 1);
+	bitonic_sort_recursive(array, 0, size, 1);
 }
 
 

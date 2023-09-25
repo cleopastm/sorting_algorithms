@@ -10,9 +10,10 @@
  */
 void swap(int *array, int i, int j)
 {
-    int temp = array[i];
-    array[i] = array[j];
-    array[j] = temp;
+	int temp = array[i];
+
+	array[i] = array[j];
+	array[j] = temp;
 }
 
 /**
@@ -26,22 +27,22 @@ void swap(int *array, int i, int j)
  */
 void sift_down(int *array, size_t size, int idx, size_t original_size)
 {
-    int largest = idx;
-    int left = 2 * idx + 1;
-    int right = 2 * idx + 2;
+	int largest = idx;
+	int left = 2 * idx + 1;
+	int right = 2 * idx + 2;
 
-    if (left < (int)size && array[left] > array[largest])
-        largest = left;
+	if (left < (int)size && array[left] > array[largest])
+	largest = left;
 
-    if (right < (int)size && array[right] > array[largest])
-        largest = right;
+	if (right < (int)size && array[right] > array[largest])
+	largest = right;
 
-    if (largest != idx)
-    {
-        swap(array, idx, largest);
-        print_array(array, original_size);
-        sift_down(array, size, largest, original_size);
-    }
+	if (largest != idx)
+	{
+	swap(array, idx, largest);
+	print_array(array, original_size);
+	sift_down(array, size, largest, original_size);
+	}
 }
 
 /**
@@ -53,19 +54,19 @@ void sift_down(int *array, size_t size, int idx, size_t original_size)
  */
 void heap_sort(int *array, size_t size)
 {
-    int i;
+	int i;
 
-    if (array == NULL || size < 2)
-        return;
+	if (array == NULL || size < 2)
+	return;
 
-    for (i = size / 2 - 1; i >= 0; i--)
-        sift_down(array, size, i, size);
+	for (i = size / 2 - 1; i >= 0; i--)
+	sift_down(array, size, i, size);
 
-    for (i = size - 1; i > 0; i--)
-    {
-        swap(array, 0, i);
-        print_array(array, size);
-        sift_down(array, i, 0, size);
-    }
-} 
+	for (i = size - 1; i > 0; i--)
+	{
+	swap(array, 0, i);
+	print_array(array, size);
+	sift_down(array, i, 0, size);
+	}
+}
 
